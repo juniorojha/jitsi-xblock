@@ -23,8 +23,8 @@ def package_data(pkg, roots):
 setup(
     name='jitsi_x',
     version='0.1',
-    description='Jitsi Integrator',   # TODO: write a better description.
-    license='UNKNOWN',          # TODO: choose a license: 'AGPL v3' and 'Apache 2.0' are popular.
+    description='Jitsi Integrator',
+    license='AGPL v3',
     packages=[
         'jitsi_x',
     ],
