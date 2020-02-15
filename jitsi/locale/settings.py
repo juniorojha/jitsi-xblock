@@ -1,5 +1,5 @@
 """
-Django settings for jitsi_x project.
+Django settings for jitsi project.
 For more information on this file, see
 https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET', 'open_secret')
 
 INSTALLED_APPS = (
     'statici18n',
-    'jitsi_x',
+    'jitsi',
 )
 
 # Internationalization
@@ -40,7 +40,7 @@ STATIC_URL = '/static/'
 
 STATICI18N_DOMAIN = 'text'
 STATICI18N_PACKAGES = (
-    'jitsi_x.translations',
+    'jitsi.translations',
 )
-STATICI18N_ROOT = 'jitsi_x/public/js'
+STATICI18N_ROOT = 'jitsi/public/js'
 STATICI18N_OUTPUT_DIR = 'translations'

@@ -1,4 +1,4 @@
-README for Jitsi Integrator
+README for Jitsi XBlock
 
 
 Testing with Docker
@@ -69,7 +69,7 @@ These catalogs can be created by running::
     $ make extract_translations
 
 The previous command will create the necessary ``.po`` files under
-``jitsi_x/jitsi_x/locale/en/LC_MESSAGES/text.po``.
+``jitsi-xblock/jitsi/locale/en/LC_MESSAGES/text.po``.
 The ``text.po`` file is created from the ``django-partial.po`` file created by
 ``django-admin makemessages`` (`makemessages documentation <https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#message-files>`_),
 this is why you will not see a ``django-partial.po`` file.

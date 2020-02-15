@@ -1,0 +1,9 @@
+/* CSS for JitsiXBlock */
+
+.jitsi_block .count {
+    font-weight: bold;
+}
+
+.jitsi_block p {
+    cursor: pointer;
+}
