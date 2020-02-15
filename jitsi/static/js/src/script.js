@@ -92,9 +92,9 @@ function fireWhenReady() {
     }
 }
 
-$(document).ready(fireWhenReady);
+// $(document).ready(fireWhenReady);
 
 // Remove the conference object
 document.onunload = function(){
 	JitsiApi.dispose();
-};
+}

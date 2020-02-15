@@ -15,4 +15,5 @@ function JitsiXBlock(runtime, element) {
     //     });
     // });
 
+    fireWhenReady();
 }

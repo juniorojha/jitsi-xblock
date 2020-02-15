@@ -24,8 +24,8 @@ class JitsiXBlock(XBlock):
     # )
 
     display_name = String(
-        display_name = "Video Conferencing",
-        default="Jitsi Video Conferencing",
+        display_name = "Jitsi Web Conferencing",
+        default = "Web Conferencing",
         scode=Scope.settings
     )
 
