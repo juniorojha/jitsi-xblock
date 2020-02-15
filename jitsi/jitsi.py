@@ -44,11 +44,11 @@ class JitsiXBlock(XBlock):
         frag = Fragment(html.format(self=self))
         frag.add_css(self.resource_string("static/css/jitsi.css"))
 
-        # Add enc-base64 js
-        frag.add_javascript(self.resource_string("static/js/enc-base64-min.js"))
-
         # Add hmac-sha26 js
         frag.add_javascript(self.resource_string("static/js/hmac-sha256.js"))
+
+        # Add enc-base64 js
+        frag.add_javascript(self.resource_string("static/js/enc-base64-min.js"))
 
         # Add Jitsi External API
         frag.add_javascript(self.resource_string("static/js/external_api.js"))
