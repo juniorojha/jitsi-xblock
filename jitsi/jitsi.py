@@ -40,28 +40,31 @@ class JitsiXBlock(XBlock):
         The primary view of the JitsiX, shown to students
         when viewing courses.
         """
+        loader = ResourceLoader(__name__)
         html = self.resource_string("static/html/jitsi.html")
         frag = Fragment(html.format(self=self))
         frag.add_css(self.resource_string("static/css/jitsi.css"))
 
         # Add hmac-sha26 js
-        frag.add_javascript(self.resource_string("static/js/hmac-sha256.js"))
+        frag.add_javascript(loader.load_unicode("static/js/hmac-sha256.js"))
 
         # Add enc-base64 js
-        frag.add_javascript(self.resource_string("static/js/enc-base64-min.js"))
+        frag.add_javascript(loader.load_unicode("static/js/enc-base64-min.js"))
 
         # Add Jitsi External API
-        frag.add_javascript(self.resource_string("static/js/external_api.js"))
+        frag.add_javascript(loader.load_unicode("static/js/external_api.js"))
+
+        # fragment.add_javascript(loader.load_unicode('static/js/xblock_lti_consumer.js'))
 
         # statici18n_js_url = self._get_statici18n_js_url()
         # if statici18n_js_url:
         #     frag.add_javascript_url(self.runtime.local_resource_url(self, statici18n_js_url))
 
         # Add the actual script
-        frag.add_javascript(self.resource_string("static/js/src/script.js"))
+        frag.add_javascript(loader.load_unicode("static/js/src/script.js"))
 
         # Fire the initializer here
-        frag.add_javascript(self.resource_string("static/js/src/jitsi.js"))
+        frag.add_javascript(loader.load_unicode("static/js/src/jitsi.js"))
 
         frag.initialize_js('JitsiXBlock')
         return frag
