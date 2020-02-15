@@ -3,7 +3,7 @@
 import pkg_resources
 
 from django.utils import translation
-from xblock.core import XBlock
+from xblock.core import List, Scope, String, XBlock
 from xblock.fields import Scope, Integer
 from xblock.fragment import Fragment
 from xblockutils.resources import ResourceLoader
