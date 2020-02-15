@@ -44,20 +44,24 @@ class JitsiXBlock(XBlock):
         frag = Fragment(html.format(self=self))
         frag.add_css(self.resource_string("static/css/jitsi_x.css"))
 
-        # # Add enc-base64 js
-        # frag.add_javascript(self.resource_string("static/js/enc-base64-min.js"))
+        # Add enc-base64 js
+        frag.add_javascript(self.resource_string("static/js/enc-base64-min.js"))
 
-        # # Add hmac-sha26 js
-        # frag.add_javascript(self.resource_string("static/js/hmac-sha256.js"))
+        # Add hmac-sha26 js
+        frag.add_javascript(self.resource_string("static/js/hmac-sha256.js"))
 
-        # # Add Jitsi External API
-        # frag.add_javascript(self.resource_string("static/js/external_api.js"))
+        # Add Jitsi External API
+        frag.add_javascript(self.resource_string("static/js/external_api.js"))
 
         # statici18n_js_url = self._get_statici18n_js_url()
         # if statici18n_js_url:
         #     frag.add_javascript_url(self.runtime.local_resource_url(self, statici18n_js_url))
 
         frag.add_javascript(self.resource_string("static/js/src/jitsi.js"))
+
+        # Add the actual script
+        frag.add_javascript(self.resource_string("static/js/src/script.js"))
+
         frag.initialize_js('JitsiXBlock')
         return frag
 
