@@ -2,8 +2,8 @@
 
 .PHONY: dev.clean dev.build dev.run
 
-REPO_NAME := jitsi_x
-PACKAGE_NAME := jitsi_x
+REPO_NAME := jitsi-xblock
+PACKAGE_NAME := jitsi
 EXTRACT_DIR := $(PACKAGE_NAME)/locale/en/LC_MESSAGES
 EXTRACTED_DJANGO := $(EXTRACT_DIR)/django-partial.po
 EXTRACTED_DJANGOJS := $(EXTRACT_DIR)/djangojs-partial.po

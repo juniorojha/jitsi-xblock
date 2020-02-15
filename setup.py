@@ -1,4 +1,4 @@
-"""Setup for Jitsi Integrator."""
+"""Setup for Jitsi XBlock."""
 
 import os
 from setuptools import setup
@@ -21,20 +21,20 @@ def package_data(pkg, roots):
 
 
 setup(
-    name='jitsi_x',
+    name='jitsi-xblock',
     version='0.1',
     description='Jitsi Integrator',
     license='AGPL v3',
     packages=[
-        'jitsi_x',
+        'jitsi',
     ],
     install_requires=[
         'XBlock',
     ],
     entry_points={
         'xblock.v1': [
-            'jitsi = jitsi_x:JitsiX',
+            'jitsi = jitsi:JitsiXBlock',
         ]
     },
-    package_data=package_data("jitsi_x", ["static", "public"]),
+    package_data=package_data("jitsi", ["static", "public"]),
 )
