@@ -22,7 +22,7 @@ def package_data(pkg, roots):
 
 setup(
     name='jitsi-xblock',
-    version='0.1',
+    version='1.0',
     description='Jitsi Integrator',
     license='AGPL v3',
     packages=[
