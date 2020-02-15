@@ -42,7 +42,7 @@ class JitsiXBlock(XBlock):
         """
         html = self.resource_string("static/html/jitsi.html")
         frag = Fragment(html.format(self=self))
-        frag.add_css(self.resource_string("static/css/jitsi_x.css"))
+        frag.add_css(self.resource_string("static/css/jitsi.css"))
 
         # Add enc-base64 js
         frag.add_javascript(self.resource_string("static/js/enc-base64-min.js"))
