@@ -57,10 +57,11 @@ class JitsiXBlock(XBlock):
         # if statici18n_js_url:
         #     frag.add_javascript_url(self.runtime.local_resource_url(self, statici18n_js_url))
 
-        frag.add_javascript(self.resource_string("static/js/src/jitsi.js"))
-
         # Add the actual script
         frag.add_javascript(self.resource_string("static/js/src/script.js"))
+
+        # Fire the initializer here
+        frag.add_javascript(self.resource_string("static/js/src/jitsi.js"))
 
         frag.initialize_js('JitsiXBlock')
         return frag

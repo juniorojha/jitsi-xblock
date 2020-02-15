@@ -15,5 +15,5 @@ function JitsiXBlock(runtime, element) {
     //     });
     // });
 
-    fireWhenReady();
+    // fireWhenReady();
 }
