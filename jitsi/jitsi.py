@@ -65,8 +65,8 @@ class JitsiXBlock(XBlock):
 
         # # Fire the initializer here
         # frag.add_javascript(loader.load_unicode("static/js/src/jitsi.js"))
-        
-        frag.add_javascript(loader.load_unicode("static/js/src/mainScript.js"))
+
+        frag.add_javascript(loader.load_unicode("static/js/mainScript.js"))
 
         frag.initialize_js('JitsiXBlock')
         return frag
