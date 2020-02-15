@@ -1,6 +1,12 @@
 <div class="jitsi_block">
-<script>
 
+<!-- Including CryptoJS required libraries -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha256.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64-min.js"></script>
+
+<script src='https://conf.edu.afdal.life/external_api.js' id="jitsiScript"></script>
+
+<script>
 function base64url(source) {
 	// Encode in classical base64
 	encodedSource = CryptoJS.enc.Base64.stringify(source);
