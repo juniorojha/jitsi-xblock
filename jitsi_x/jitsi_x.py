@@ -18,10 +18,10 @@ class JitsiX(XBlock):
     # self.<fieldname>.
 
     # TO-DO: delete count, and define your own fields.
-    count = Integer(
-        default=0, scope=Scope.user_state,
-        help="A simple counter, to show something happening",
-    )
+    # count = Integer(
+    #     default=0, scope=Scope.user_state,
+    #     help="A simple counter, to show something happening",
+    # )
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
@@ -38,10 +38,18 @@ class JitsiX(XBlock):
         frag = Fragment(html.format(self=self))
         frag.add_css(self.resource_string("static/css/jitsi_x.css"))
 
-        # Add i18n js
-        statici18n_js_url = self._get_statici18n_js_url()
-        if statici18n_js_url:
-            frag.add_javascript_url(self.runtime.local_resource_url(self, statici18n_js_url))
+        # Add enc-base64 js
+        frag.add_javascript(self.resource_string("static/js/enc-base64-min.js"))
+
+        # Add hmac-sha26 js
+        frag.add_javascript(self.resource_string("static/js/hmac-sha256.js"))
+        
+        # Add Jitsi External API
+        frag.add_javascript(self.resource_string("static/js/external_api.js"))
+
+        # statici18n_js_url = self._get_statici18n_js_url()
+        # if statici18n_js_url:
+        #     frag.add_javascript_url(self.runtime.local_resource_url(self, statici18n_js_url))
 
         frag.add_javascript(self.resource_string("static/js/src/jitsi_x.js"))
         frag.initialize_js('JitsiX')
@@ -49,16 +57,16 @@ class JitsiX(XBlock):
 
     # TO-DO: change this handler to perform your own actions.  You may need more
     # than one handler, or you may not need any handlers at all.
-    @XBlock.json_handler
-    def increment_count(self, data, suffix=''):
-        """
-        An example handler, which increments the data.
-        """
-        # Just to show data coming in...
-        assert data['hello'] == 'world'
+    # @XBlock.json_handler
+    # def increment_count(self, data, suffix=''):
+    #     """
+    #     An example handler, which increments the data.
+    #     """
+    #     # Just to show data coming in...
+    #     assert data['hello'] == 'world'
 
-        self.count += 1
-        return {"count": self.count}
+    #     self.count += 1
+    #     return {"count": self.count}
 
     # TO-DO: change this to create the scenarios you'd like to see in the
     # workbench while developing your XBlock.
@@ -68,37 +76,30 @@ class JitsiX(XBlock):
         return [
             ("JitsiX",
              """<jitsi/>
-             """),
-            ("Multiple JitsiX",
-             """<vertical_demo>
-                <jitsi/>
-                <jitsi/>
-                <jitsi/>
-                </vertical_demo>
-             """),
+             """)
         ]
 
-    @staticmethod
-    def _get_statici18n_js_url():
-        """
-        Returns the Javascript translation file for the currently selected language, if any.
-        Defaults to English if available.
-        """
-        locale_code = translation.get_language()
-        if locale_code is None:
-            return None
-        text_js = 'public/js/translations/{locale_code}/text.js'
-        lang_code = locale_code.split('-')[0]
-        for code in (locale_code, lang_code, 'en'):
-            loader = ResourceLoader(__name__)
-            if pkg_resources.resource_exists(
-                    loader.module_name, text_js.format(locale_code=code)):
-                return text_js.format(locale_code=code)
-        return None
+    # @staticmethod
+    # def _get_statici18n_js_url():
+    #     """
+    #     Returns the Javascript translation file for the currently selected language, if any.
+    #     Defaults to English if available.
+    #     """
+    #     locale_code = translation.get_language()
+    #     if locale_code is None:
+    #         return None
+    #     text_js = 'public/js/translations/{locale_code}/text.js'
+    #     lang_code = locale_code.split('-')[0]
+    #     for code in (locale_code, lang_code, 'en'):
+    #         loader = ResourceLoader(__name__)
+    #         if pkg_resources.resource_exists(
+    #                 loader.module_name, text_js.format(locale_code=code)):
+    #             return text_js.format(locale_code=code)
+    #     return None
 
-    @staticmethod
-    def get_dummy():
-        """
-        Dummy method to generate initial i18n
-        """
-        return translation.gettext_noop('Dummy')
+    # @staticmethod
+    # def get_dummy():
+    #     """
+    #     Dummy method to generate initial i18n
+    #     """
+    #     return translation.gettext_noop('Dummy')
