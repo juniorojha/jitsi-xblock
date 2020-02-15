@@ -23,6 +23,12 @@ class JitsiXBlock(XBlock):
     #     help="A simple counter, to show something happening",
     # )
 
+    display_name = String(
+        display_name = "Video Conferencing",
+        default="Jitsi Video Conferencing",
+        scode=Scope.settings
+    )
+
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
         data = pkg_resources.resource_string(__name__, path)
@@ -34,7 +40,7 @@ class JitsiXBlock(XBlock):
         The primary view of the JitsiX, shown to students
         when viewing courses.
         """
-        html = self.resource_string("static/html/jitsi_x.html")
+        html = self.resource_string("static/html/jitsi.html")
         frag = Fragment(html.format(self=self))
         frag.add_css(self.resource_string("static/css/jitsi_x.css"))
 
