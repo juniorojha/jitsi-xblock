@@ -1,6 +1,6 @@
 function base64url(source) {
 	// Encode in classical base64
-	encodedSource = window.CryptoJS.enc.Base64.stringify(source);
+	encodedSource = CryptoJS.enc.Base64.stringify(source);
 
 	// Remove padding equal characters
 	encodedSource = encodedSource.replace(/=+$/, '');
@@ -50,14 +50,14 @@ function loadJitsi() {
 
 	var secret = "edx";
 
-	var stringifiedHeader = window.CryptoJS.enc.Utf8.parse(JSON.stringify(header));
+	var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));
 	var encodedHeader = base64url(stringifiedHeader);
 
-	var stringifiedData = window.CryptoJS.enc.Utf8.parse(JSON.stringify(data));
+	var stringifiedData = CryptoJS.enc.Utf8.parse(JSON.stringify(data));
 	var encodedData = base64url(stringifiedData);
 
 	var token = encodedHeader + "." + encodedData;
-	signature = window.CryptoJS.HmacSHA256(token, secret);
+	signature = CryptoJS.HmacSHA256(token, secret);
 	signature = base64url(signature);
 	var signedToken = token + "." + signature;
 
@@ -84,7 +84,7 @@ function loadJitsi() {
 }
 
 function fireWhenReady() {
-    if (typeof JitsiMeetExternalAPI != 'undefined' && typeof window.CryptoJS != 'undefined') {
+    if (typeof JitsiMeetExternalAPI != 'undefined' && typeof CryptoJS != 'undefined') {
         loadJitsi();
     }
     else {
