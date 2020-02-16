@@ -47,6 +47,8 @@ function base64url(source) {
 }
 
 function loadJitsi() {
+	$('#start_jitsi').html("Starting Web Conference...");
+	$('#start_jitsi').prop('disabled', true);
 	var JitsiDomain = "conf.edu.afdal.life";
 
 	var courseInfo = $('.bookmark-button').data('bookmark-id');
@@ -108,6 +110,7 @@ function loadJitsi() {
 	}
 
 	var JitsiApi = new JitsiMeetExternalAPI(JitsiDomain, JitsiOptions);
+	$('#start_jitsi').html("Web Conference Started");
 
 	JitsiApi.executeCommands({
 		subject: subject,
